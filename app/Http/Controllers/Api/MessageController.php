@@ -13,9 +13,18 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Message::all();
+        $messages = Message::select('users.name','messages.message','messages.created_at','messages.message_id','messages.user_id')
+                                ->join('users', 'messages.user_id', '=', 'users.id');
+        
+        if($request->keyword){
+            $messages->where(function ($query) use ($request){
+                $query->where('users.name', 'ilike', '%' . $request->keyword . '%')
+                     ->orWhere('messages.message', 'like', "%" . $request->keyword . '%');
+            });
+        }
+        return $messages->paginate(3);
     }
 
     /**
