@@ -35,13 +35,14 @@ Route::controller(CarouselItemsController::class)->group(function () {
     Route::delete('/carousel/{id}', 'destroy');
 });
 
-// Route::get('/user', [UserController::class, 'index']);
-// Route::get('/user/{id}', [UserController::class, 'show']);
-// Route::post('/user', [UserController::class, 'store'])->name('user.login');
-// Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
-// Route::put('/user/email/{id}', [UserController::class, 'email'])->name('user.email');
-// Route::put('/user/password/{id}', [UserController::class, 'password'])->name('user.password');
-// Route::delete('/user/{id}', [UserController::class, 'destroy']);
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/{id}', [UserController::class, 'show']);
+Route::post('/user', [UserController::class, 'store'])->name('user.login');
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::put('/user/email/{id}', [UserController::class, 'email'])->name('user.email');
+Route::put('/user/password/{id}', [UserController::class, 'password'])->name('user.password');
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
+Route::get('/selection', [UserController::class, 'selection']);
 
 Route::get('/message', [MessageController::class, 'index']);
 Route::get('/message/{id}', [MessageController::class, 'show']);

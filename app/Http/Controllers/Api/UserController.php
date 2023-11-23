@@ -16,6 +16,10 @@ class UserController extends Controller
     {
         return User::all();
     }
+    public function selection()
+    {
+        return User::select('id','name')->get();
+    }
 
     /**
      * Store a newly created resource in storage.

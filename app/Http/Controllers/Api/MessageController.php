@@ -24,7 +24,7 @@ class MessageController extends Controller
                      ->orWhere('messages.message', 'like', "%" . $request->keyword . '%');
             });
         }
-        return $messages->paginate(3);
+        return $messages->get();
     }
 
     /**
